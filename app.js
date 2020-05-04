@@ -141,7 +141,7 @@ app.post('/addprod', function (req, res, next) {
     if (nom.length === 0 || quantite.length === 0 || prix.length === 0) {
         errors = true;
 
-        req.flash('error', "Please enter Nom , Quantité and Price");
+        req.flash('error', "SVP entrer Nom, Quantité et le prix");
         res.redirect('/addprod');
 
     }
@@ -153,7 +153,7 @@ app.post('/addprod', function (req, res, next) {
             if (err) {
                 // throw err;
 
-                req.flash('error', "Please Add Fournisseur And Rayon First");
+                req.flash('error', "SVP ajouter le Fournisseur et le Rayon");
                res.redirect('/');
                 
             } else {
@@ -162,8 +162,8 @@ app.post('/addprod', function (req, res, next) {
                 connection.query('SELECT id FROM rayon WHERE categorie= ?', categorie, function (err, result) {
                     if (err) {
                         // throw err;
-                        req.flash('error', "Please Add Fournisseur And Rayon First");
-                          res.redirect('/');
+                        req.flash('error', "SVP ajouter le Fournisseur et le Rayon");
+                        res.redirect('/');
                     } else {
 
                         categorie = result[0].id
@@ -184,7 +184,7 @@ app.post('/addprod', function (req, res, next) {
 
                             } else {
 
-                                req.flash('success', 'Product successfully added');
+                                req.flash('success', 'Produit ajouter en succeser !');
                                 res.redirect('/');
                             }
                         })
@@ -208,7 +208,7 @@ app.post('/addfourn', function (req, res, next) {
     if (nomfour.length === 0 || mail.length === 0 || tele.length === 0) {
         errors = true;
 
-        req.flash('error', "Please enter Nom , Mail and Tele");
+        req.flash('error', "SVP entrer NOM, Email et Telephone");
         res.render('addfourn');
 
     }
@@ -231,7 +231,7 @@ app.post('/addfourn', function (req, res, next) {
 
             } else {
 
-                req.flash('success', 'Fournisseur successfully added');
+                req.flash('success', 'Fournisseur ajouter en succeser!');
                 res.redirect('/addprod');
             }
         })
@@ -251,7 +251,7 @@ app.post('/addcat', function (req, res, next) {
     if (categorie.length === 0) {
         errors = true;
 
-        req.flash('error', "Please enter Categorie");
+        req.flash('error', "SVP entrer une Categorie");
         res.render('addcat');
 
     }
@@ -273,7 +273,7 @@ app.post('/addcat', function (req, res, next) {
 
             } else {
 
-                req.flash('success', 'Category successfully added');
+                req.flash('success', 'Categorie ajouter en succeser!');
                 res.redirect('/addprod');
             }
         })
@@ -315,7 +315,7 @@ app.post('/updateproduct/:id', (req, res) => {
     if (nom.length === 0 || quantite.length === 0 || prix.length === 0) {
         errors = true;
 
-        req.flash('error', "Please enter Name , Quantité and Price");
+        req.flash('error', "SVP entrer nom , Quantité et le prix");
         res.redirect('/');
 
     }
@@ -364,7 +364,7 @@ app.post('/updatedepartment/:id', (req, res) => {
     if (categorie.length === 0) {
         errors = true;
 
-        req.flash('error', "Please enter Categorie Name");
+        req.flash('error', "SVP entrer nom de categorie");
         res.redirect('/rayon');
 
     }
@@ -416,7 +416,7 @@ app.post('/updatefourni/:id', (req, res) => {
     if (nomfour.length === 0 || mail.length === 0 || tele.length === 0) {
         errors = true;
 
-        req.flash('error', "Please enter Nom , Mail and Tele");
+        req.flash('error', "SVP entrer nom, email, telephone");
         res.redirect('/fournisseur');
 
     }
@@ -448,7 +448,7 @@ app.get('/deletequantite/:id', function (req, rep, next) {
     connection.query("UPDATE produit SET quantite = quantite - 1 WHERE id = ?", id, (err, result) => {
         if (!err) {
 
-            req.flash('success', 'Quantity Reduced Successfully')
+            req.flash('success', 'Quantité dimunier en succeser')
             rep.redirect('/')
 
 
@@ -483,7 +483,7 @@ app.get('/delete/(:id)', function (req, res, next) {
             req.flash('error', err)
             res.redirect('/')
         } else {
-            req.flash('success', 'Product successfully deleted! ID = ' + id)
+            req.flash('success', 'produit est supprimer! ID = ' + id)
             res.redirect('/')
         }
     })
@@ -496,7 +496,7 @@ app.get('/delete/four/(:id)', function (req, res, next) {
             req.flash('error', 'Products exists in this department')
             res.redirect('/fournisseur')
         } else {
-            req.flash('success', 'Fournisseur successfully deleted! ID = ' + id)
+            req.flash('success', 'Fournisseur  est supprimer!  ID = ' + id)
             res.redirect('/fournisseur')
         }
     })
@@ -506,10 +506,10 @@ app.get('/delete/cat/(:id)', function (req, res, next) {
     let id = req.params.id;
     connection.query('DELETE FROM rayon WHERE id = ' + id, function (err, result) {
         if (err) {
-            req.flash('error', 'Products exists in this department')
+            req.flash('error', 'produit est deja existe dans ce department')
             res.redirect('/rayon')
         } else {
-            req.flash('success', 'Category successfully deleted! ID = ' + id)
+            req.flash('success', 'categorie  est supprimer!  ID = ' + id)
             res.redirect('/rayon')
         }
     })

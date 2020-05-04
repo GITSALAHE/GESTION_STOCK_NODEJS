@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-stock</title>
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand d-flex" href="/">
+          <img src="logo.png" width="w-100" height="100" alt="">
+        </a>
+        <div class="container d-flex justify-content-center align-content-center">
+            <div class="row ">
+                <h1 style="color: #fff; margin-right: 72px;">App Gestion stock</h1>
+            </div>
+        </div>
+      </nav>
+
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+        
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <h1 style="color: #fff;">Produit :</h1>
+            </div>
+        </div>
+   
+
+    <div class="container">
+        <div class="row">
+            <table id="myTable">
+                <thead>
+                    <tr class="table100-head">
+                        <th class="column">ID</th>
+                        <th class="column">Nom du produit</th>
+                        <th class="column">Quantité</th>
+                        <th class="column">Prix</th>
+                        <th class="column">Nom du fournisseur</th>
+                        <th class="column">Categorie</th>
+                        <th style="width: 50px;" class="column"></th>
+                        <th style="width: 80px;" class="column"></th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <% produits.forEach(function (prod) { %>
+                    <tr>
+                        <td class="column"><%= prod.id %> </td>
+                        <td class="column"><%= prod.nom %></td>
+                        <td class="column"><%= prod.quantite %></td>
+                        <td class="column"><%= prod.prix %></td>
+                        <td class="column"><%= prod.nomfour %></td>
+                        <td class="column"><%= prod.categorie %></td>
+                        <td><a href="/delete/<%= prod.id %>" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                        <td><a href="/updateproduct/<%= prod.id %> " class="btn btn-sm btn-success"> UPDATE</a> </td>
+                        <!-- <td><a href="/deletequantite/<%= prod.id %> " class="btn btn-sm btn-success"> -</a> </td> -->
+
+
+
+                    </tr>
+
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+         <div class="row d-flex justify-content-center">
+            <a href="/addprod">
+                <button class="btn btn-success" style="margin-right: 5px;">Ajouter un produit</button>
+            </a>
+            <a href="/fournisseur"> 
+                <button class="btn btn-success"  style="margin-right: 5px;">Fournisseurs</button> 
+            </a>
+            <a href="/rayon">
+                <button class="btn btn-success"  style="margin-right: 5px;">Categories</button>
+            </a>
+        
+         </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G-stock</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand d-flex" href="/">
+          <img src="logo.png" width="w-100" height="100" alt="">
+        </a>
+        <div class="container d-flex justify-content-center align-content-center">
+            <div class="row ">
+                <h1 style="color: #fff; margin-right: 72px;">App Gestion stock</h1>
+            </div>
+        </div>
+      </nav>
+
+    <% if (messages.success) { %>
+        <div class="alert alert-success" role="alert"><%- messages.success %></div>
+        <% } %>
+    
+        <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+        <% } %>
+                
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <h1 style="color: #fff;">Categories</h1>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <table id="myTable" >  
+                    <thead>  
+                        <tr class="table100-head">  
+                            <th class="column">ID</th>  
+                            <th class="column">Categorie</th>  
+                                           
+                            <th style="width: 50px;" class="column"></th>  
+                            <th style="width: 80px;" class="column"></th>  
+        
+        
+        
+                        </tr>  
+                    </thead>  
+                     <tbody>  
+                     <% rayons.forEach(function (ray) { %>
+                        <tr>  
+                            <td class="column"><%= ray.id %> </td>  
+                            <td class="column"><%= ray.categorie %></td>  
+                            
+                         
+                            <td><a href="/delete/cat/<%= ray.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                            <td><a href="/updatedepartment/<%= ray.id %> " class="btn btn-sm btn-success"> UPDATE</a> </td>
+        
+                        </tr>
+                                                           
+                     <% }) %>
+                     </tbody>
+                </table>  
+            </div>
+        </div>
+   
+
+
+      
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row d-flex justify-content-center">   
+                <div class="form-group">
+                    <a style="margin-right: 10px;" type="button" href="/addcat"  class="btn btn-success">Ajouter une categorie</a>
+                    <a type="button" href="/"  class="btn btn-success">Produits</a>
+                </div>
+            </div>
+        </div>
+       
+
+
+
+
+
+        
+
+
+</body>
+
+</html> 

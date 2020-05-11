@@ -3,6 +3,7 @@
 
 https://github.com/GITSALAHE/GESTION_STOCK_NODEJS.git
 
+https://g-stock.herokuapp.com/
 ## What Is This?
 -------------
 
